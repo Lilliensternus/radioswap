@@ -71,6 +71,11 @@
 <div class="bg-orb nrk" id="orbNrk"></div>
 <div class="bg-orb spotify" id="orbSpotify"></div>
 <div class="app">
+  <div id="splash" style="position:fixed;inset:0;background:#0a0a0f;z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;" onclick="startSplash()">
+  <div style="font-size:48px;margin-bottom:20px;">📻</div>
+  <div style="font-size:24px;font-weight:800;color:#f0f0f8;margin-bottom:8px;">RadioSwap</div>
+  <div style="font-size:14px;color:#6b6b80;font-family:'DM Mono',monospace;">Trykk hvor som helst for å starte</div>
+</div>
   <header>
     <div class="logo">RadioSwap Beta</div>
     <h1><span class="nrk-c">NRK</span><span class="x-c">×</span><span class="sp-c">Spotify</span></h1>
@@ -327,8 +332,10 @@ function log(msg,type){
   el.insertBefore(div,el.firstChild);
   while(el.children.length>20)el.removeChild(el.lastChild);
 }
-
-window.addEventListener('load',()=>{
+function startSplash(){
+  document.getElementById('splash').style.display='none';
+}
+  window.addEventListener('load',()=>{
   document.getElementById('clientId').value=localStorage.getItem('cid')||DEFAULT_CID;
   document.getElementById('playlistUrl').value=localStorage.getItem('purl')||DEFAULT_PL;
   loadSaved();
