@@ -256,7 +256,7 @@ async function startRadio(){
   document.getElementById('logCard').classList.remove('hidden');
   await loadTracks();
   audio=new Audio();audio.crossOrigin='anonymous';audio.src=NRK;
-  setupAudio(audio);audio.play().catch(()=>{});
+  setupAudio(audio);audio.play().catch(()=>{   log('Trykk på skjermen for å starte lyd','nrk');   document.addEventListener('touchstart',()=>{     audio.play();     if(actx&&actx.state==='suspended')actx.resume();   },{once:true}); }); if(actx&&actx.state==='suspended')actx.resume();
   log('Buffrer NRK P1…','nrk');setStatus('nrk','Buffrer…','Venter 15 sek…');
   bSec=0;
   bInt=setInterval(()=>{
